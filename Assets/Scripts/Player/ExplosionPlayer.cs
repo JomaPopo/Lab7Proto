@@ -66,9 +66,9 @@ public class PlayerExample2 : BasePlayerController, IAimable, IMoveable, IExplos
     private void ApplyExplosionPhysics(Vector3 position)
     {
         Collider[] colliders = Physics.OverlapSphere(position, explosionRadius, affectedLayers);
-        foreach (var collider in colliders)
+        for (int i = 0; i < colliders.Length; i++)
         {
-            Rigidbody rb = collider.GetComponent<Rigidbody>();
+            Rigidbody rb = colliders[i].GetComponent<Rigidbody>();
             if (rb != null)
             {
                 rb.AddExplosionForce(
